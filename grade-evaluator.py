@@ -111,8 +111,12 @@ def evaluate_grades(data):
         for assignment in low_scored_assignments:
             if assignment["weight"] == highest_weight:
                 resubmission_assignments.append(assignment["assignment"])
-    # TODO: f) Print the final decision (PASSED / FAILED) and resubmission options
-    
+    # TODO: f) Print the final decision (PASSED / FAILED) and resubmission options  
+
+    if resubmission_assignments:
+        print("Available for resubmission: " + ", ".join(resubmission_assignments))
+    else:
+        print("Available for resubmission: None")
     pass
 
 if __name__ == "__main__":
