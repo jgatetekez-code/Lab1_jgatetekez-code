@@ -76,7 +76,24 @@ def evaluate_grades(data):
 
     # TODO: d) Determine Pass/Fail status (>= 50% in BOTH categories)
 
+    total_formative = 0.0
+    total_sumamtive = 0.0
+    for assignment in data:
+        if assignment["group"] == "Formative":
+            total_formative += (assignment["score"] * assignment["weight"]) / 100
+        else:
+            total_sumamtive += (assignment["score"] * assignment["weight"]) / 100
 
+    
+    percentage_formative = (total_formative * 100) / 60
+    percentage_summative = (total_sumamtive * 100) / 40
+    if  percentage_formative >= 50 and percentage_summative >= 50:
+        print("Status: PASSED")
+    else:
+        print("Status: FAILED")
+        
+    print(f"Formative(60): {round(total_formative, 2)}")
+    print(f"Summative(40): {round(total_sumamtive, 2)}")
     # TODO: e) Check for failed formative assignments (< 50%)
     #          and determine which one(s) have the highest weight for resubmission.
     # TODO: f) Print the final decision (PASSED / FAILED) and resubmission options
